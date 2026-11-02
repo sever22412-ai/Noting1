@@ -10,6 +10,7 @@
             color: #00ff66;
             font-family: 'Courier New', Courier, monospace;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -17,20 +18,53 @@
             overflow: hidden;
             user-select: none;
         }
+
         .text-container {
             text-align: center;
             font-size: 1.5rem;
             font-weight: bold;
             text-shadow: 0 0 10px #00ff66, 0 0 20px #00ff66;
             letter-spacing: 2px;
+            margin-bottom: 30px;
         }
+
+        /* Эффект мигающего курсора */
         .cursor::after {
             content: '_';
             animation: blink 1s step-start infinite;
         }
+
         @keyframes blink {
             50% { opacity: 0; }
         }
+
+        /* Стиль для счетчика */
+        .counter-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            animation: pulse 2s infinite alternate;
+        }
+
+        .counter-box img {
+            filter: drop-shadow(0 0 8px #00ff66);
+            border-radius: 6px;
+        }
+
+        .counter-label {
+            font-size: 0.9rem;
+            color: #00ff66;
+            opacity: 0.8;
+            letter-spacing: 1px;
+        }
+
+        @keyframes pulse {
+            from { opacity: 0.85; }
+            to   { opacity: 1; }
+        }
+        
+        /* Легкий фоновый шум для атмосферы */
         body::before {
             content: "";
             position: fixed;
@@ -43,8 +77,17 @@
     </style>
 </head>
 <body>
+
     <div class="text-container cursor">
         Здесь ничего нет
     </div>
+
+    <div class="counter-box">
+        <div class="counter-label">▸ ПОСЕЩЕНИЙ:</div>
+        <!-- Счётчик от hits.sh (работает на GitHub Pages бесплатно) -->
+        <img src="https://hits.sh/sever22412-ai.github.io/Noting1.svg?label=%D0%B7%D0%B0%D1%88%D0%BB%D0%B8&color=00ff66&style=for-the-badge" 
+             alt="visits">
+    </div>
+
 </body>
 </html>
